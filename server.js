@@ -8,6 +8,7 @@ import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import { isAdmin, requireSignIn } from './middlewares/authMiddleware.js';
 import cors from 'cors';
+import {fileURLToPath} from 'url';
 import path from 'path';
 
 dotenv.config();
@@ -16,6 +17,10 @@ const app=express();
 
 //database connection
 connectDB();
+
+// esmodule fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename)
 
 //middlewares
 app.use(cors());
